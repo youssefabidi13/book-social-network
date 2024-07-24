@@ -54,25 +54,25 @@ public class AuthenticationService {
         sendValidationEmail(user);
     }
 
-//    public AuthenticationResponse authenticate(AuthenticationRequest request) {
-//        var auth = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        request.getEmail(),
-//                        request.getPassword()
-//                )
-//        );
-//
-//        var claims = new HashMap<String, Object>();
-//        var user = ((User) auth.getPrincipal());
-//        claims.put("fullName", user.getFullName());
-//
-//        var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
-//        return AuthenticationResponse.builder()
-//                .token(jwtToken)
-//                .build();
-//    }
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+        var auth = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
 
-    @Transactional
+        var claims = new HashMap<String, Object>();
+        var user = ((User) auth.getPrincipal());
+        claims.put("fullName", user.getFullName());
+
+        var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
+
+    //@Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
                 // todo exception has to be defined
@@ -131,4 +131,6 @@ public class AuthenticationService {
 
         return codeBuilder.toString();
     }
+
+
 }
