@@ -1,6 +1,8 @@
 package com.abidiyoussef.book.book;
 
+import com.abidiyoussef.book.common.BaseEntity;
 import com.abidiyoussef.book.feedback.Feedback;
+import com.abidiyoussef.book.history.BookTransactionHistory;
 import com.abidiyoussef.book.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
