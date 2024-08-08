@@ -3,6 +3,7 @@ import {BookService} from '../../../../services/services/book.service';
 import {PageResponseBookResponse} from '../../../../services/models/page-response-book-response';
 import {BookResponse} from '../../../../services/models/book-response';
 import {Router} from '@angular/router';
+import {borrowBook} from "../../../../services/fn/book/borrow-book";
 
 @Component({
   selector: 'app-book-list',
@@ -16,6 +17,7 @@ export class BookListComponent implements OnInit {
   pages: any = [];
   message = '';
   level: 'success' |'error' = 'success';
+
 
   constructor(
     private bookService: BookService,
