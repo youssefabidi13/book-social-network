@@ -1,4 +1,5 @@
 package com.abidiyoussef.book.auth;
+
 import com.abidiyoussef.book.email.EmailService;
 import com.abidiyoussef.book.email.EmailTemplateName;
 import com.abidiyoussef.book.role.RoleRepository;
@@ -72,7 +73,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    //@Transactional
+    @Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
                 // todo exception has to be defined
@@ -131,6 +132,4 @@ public class AuthenticationService {
 
         return codeBuilder.toString();
     }
-
-
 }
