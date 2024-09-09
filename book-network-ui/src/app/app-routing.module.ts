@@ -6,6 +6,11 @@ import {ActivateAccountComponent} from "./pages/activate-account/activate-accoun
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo:'books',
+    pathMatch:'full'
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
